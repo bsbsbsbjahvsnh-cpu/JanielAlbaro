@@ -206,6 +206,7 @@ ol.timeline li::before{content:"";position:absolute;left:-.45em;top:.35em;width:
       <h2>Achievements</h2>
       <div class="loyalty">🏅 <strong>Loyalty Award</strong></div>
       <div class="grid g3" style="--ih:9">
+      <!-- Upload these 5 files inside the `images/` folder in your GitHub repo -->
       <figure class="ach"><img src="images/academic-excellence.jpg" alt="Academic Excellence" loading="lazy"><figcaption><strong>Academic Excellence</strong><span>Certificate of Recognition · GWA of 90% for the 2nd Quarter, 1st Semester, SY 2024–2025 · January 14, 2025</span></figcaption></figure>
       <figure class="ach"><img src="images/conduct-excellence.jpg" alt="Conduct Excellence" loading="lazy"><figcaption><strong>Conduct Excellence</strong><span>Certificate of Recognition · 2025 K-to-12 Graduation Ceremony · April 15, 2025</span></figcaption></figure>
       <figure class="ach"><img src="images/work-immersion-outstanding.jpg" alt="Outstanding Performance in Work Immersion" loading="lazy"><figcaption><strong>Outstanding Performance in Work Immersion</strong><span>Certificate of Recognition · 2026 Graduation, Moving-Up and Recognition Ceremony · March 30, 2026</span></figcaption></figure>
@@ -219,8 +220,8 @@ ol.timeline li::before{content:"";position:absolute;left:-.45em;top:.35em;width:
     <div class="card">
       <h2>Family and Friends</h2>
       <div class="fam">
-      <figure class="ach fa"><img src="images/family-1.jpg" alt="Mother" loading="lazy"><figcaption><strong>Mother</strong><span>With my family</span></figcaption></figure>
-      <figure class="ach fb"><img src="images/family-2.jpg" alt="Father" loading="lazy"><figcaption><strong>Father</strong><span>Moments at home</span></figcaption></figure>
+      <figure class="ach fa"><img src="images/family-1.jpg" alt="Family" loading="lazy"><figcaption><strong>Family</strong><span>With my family</span></figcaption></figure>
+      <figure class="ach fb"><img src="images/family-2.jpg" alt="Family" loading="lazy"><figcaption><strong>Family</strong><span>Moments at home</span></figcaption></figure>
       <figure class="ach fs"><img src="images/sibling.jpg" alt="Sibling" loading="lazy"><figcaption><strong>Sibling</strong><span>Me and my sibling</span></figcaption></figure>
       <figure class="ach fc"><img src="images/friends-1.jpg" alt="Friends" loading="lazy"><figcaption><strong>Friends</strong><span>With my friends</span></figcaption></figure>
       <figure class="ach fd"><img src="images/friends-2.jpg" alt="Friends" loading="lazy"><figcaption><strong>Friends</strong><span>Good times together</span></figcaption></figure>
@@ -254,7 +255,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb();el
 var tx=0,ty=0;
 document.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 document.addEventListener("touchend",function(e){var t=e.changedTouches[0],mx=t.clientX-tx,my=t.clientY-ty;if(lit||Math.abs(mx)<70||Math.abs(my)>45)return;go(mx<0?1:-1)},{passive:true});
-/* shrink the text until the page fits the screen (the page never scrolls) */
 function fit(){
   var p=$(".page.active");if(!p||p.id==="home")return;
   var b=p.querySelector(".fit"),k=1;b.style.setProperty("--k",1);
@@ -274,7 +274,6 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 ids.forEach(function(id){$$("#"+id+" .card").forEach(function(el,i){el.style.animationDelay=(.12+i*.12)+"s"})});
 $$(".ach").forEach(function(el,i){el.style.animationDelay=(.3+(i%8)*.07)+"s"});
 $$(".ach img").forEach(function(img){function miss(){img.parentNode.classList.add("missing")}img.addEventListener("error",miss);if(img.complete&&img.naturalWidth===0)miss()});
-/* splash: wait for the profile photo, then reveal */
 var bar=$("#bar");
 Promise.all([new Promise(function(r){var i=new Image();i.onload=i.onerror=r;i.src="photo.jpg";setTimeout(r,6000)}),new Promise(function(r){setTimeout(r,1150)})]).then(function(){
   bar.style.transform="scaleX(1)";
